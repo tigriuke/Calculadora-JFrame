@@ -9,4 +9,18 @@ package modelo;
  * @author coffe
  */
 public class LogaritmoNatural extends Operacion{
+    
+    public LogaritmoNatural(double a, double b) {
+        b = 0;
+        super(a, b);
+    }
+    
+    public double resultado(){
+        return Math.log(a);
+    }
+    
+    @Override
+    public boolean validacion(){
+        return a <= 0? false: true;
+    }
 }
