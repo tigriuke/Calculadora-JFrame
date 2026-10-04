@@ -6,13 +6,13 @@ package modelo;
 
 /**
  *
- * @author coffe
+ * @author Samuel Lopez
  */
-public class Calculo {
-    private double a;
-    private double b;
+public class Operacion {
+    public double a;
+    public double b;
     
-    public Calculo(double a, double b) {
+    public Operacion(double a, double b) {
         this.a = a;
         this.b = b;
     }

@@ -3,20 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package modelo;
+
 /**
  *
  * @author Samuel Lopez
  */
-public class Suma extends Operacion {
+public class Resta extends Operacion {
 
-    public Suma(double a, double b) {
+    public Resta(double a, double b) {
         super(a, b);
     }
     
     @Override
     public double resultado(){
-        return a + b;
+        return a - b;
     }
-    
-    
 }
