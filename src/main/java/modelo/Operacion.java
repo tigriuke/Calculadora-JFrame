@@ -21,4 +21,9 @@ public class Operacion {
         System.out.println("Error, no se ha ingresado ningun tipo de calculo: Suma, resta, multiplicacion, division ");
         return 0;
     }
+    
+    public boolean validacion(){
+        System.out.println("Esta operacion no requiere ningun tipo de validacion. (Suma, resta, multiplicacion)");
+        return true;
+    }
 }

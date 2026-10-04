@@ -8,6 +8,19 @@ package modelo;
  *
  * @author coffe
  */
-public class RaizCuadrada {
+public class RaizCuadrada extends Operacion{
     
+    public RaizCuadrada(double a, double b) {
+        b = 2;
+        super(a, b);
+    }
+    
+    public double resultado(){
+        return Math.pow(a, b);
+    }
+    
+    @Override
+    public boolean validacion(){
+        return a < 0? false: true;
+    }
 }

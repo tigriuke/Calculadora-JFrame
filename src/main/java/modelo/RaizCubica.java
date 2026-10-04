@@ -8,20 +8,19 @@ package modelo;
  *
  * @author coffe
  */
-public class Division extends Operacion{
+public class RaizCubica extends Operacion{
     
-    public Division(double a, double b) {
-        super(a, b);
-        
+    public RaizCubica(double a, double b) {
+        b = 3;
+        super(a, b);     
     }
     
-    @Override
     public double resultado(){
-        return a / b;
+        return Math.pow(a, b);
     }
     
     @Override
     public boolean validacion(){
-        return b == 0? false: true;
+        return a < 0? false: true;
     }
 }
