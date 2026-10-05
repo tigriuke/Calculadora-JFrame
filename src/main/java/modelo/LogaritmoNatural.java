@@ -10,17 +10,17 @@ package modelo;
  */
 public class LogaritmoNatural extends Operacion{
     
-    public LogaritmoNatural(double a, double b) {
-        b = 0;
-        super(a, b);
-    }
-    
-    public double resultado(){
-        return Math.log(a);
+    public LogaritmoNatural(double a) {
+        super(a, 0);
     }
     
     @Override
-    public boolean validacion(){
-        return a <= 0? false: true;
+    public double calcular(){
+        if(a <= 0){
+            mensajeError = "Error: el logaritmo natural solo está definido para números mayores que cero.";
+            return Double.NaN;
+        }
+        mensajeError = "";
+        return Math.log(a);
     }
 }

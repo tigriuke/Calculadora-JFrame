@@ -10,17 +10,17 @@ package modelo;
  */
 public class RaizCuadrada extends Operacion{
     
-    public RaizCuadrada(double a, double b) {
-        b = 2;
-        super(a, b);
-    }
-    
-    public double resultado(){
-        return Math.pow(a, b);
+    public RaizCuadrada(double a) {
+        super(a, 0);
     }
     
     @Override
-    public boolean validacion(){
-        return a < 0? false: true;
+    public double calcular(){
+        if (a < 0){
+            mensajeError = "Error: no se puede calcular la raíz cuadrada de un número negativo.";
+            return Double.NaN;
+        }
+        mensajeError = "";
+        return Math.sqrt(a);
     }
 }

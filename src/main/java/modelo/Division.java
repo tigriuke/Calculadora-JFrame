@@ -12,16 +12,15 @@ public class Division extends Operacion{
     
     public Division(double a, double b) {
         super(a, b);
-        
     }
     
     @Override
-    public double resultado(){
+    public double calcular(){
+        if (b == 0){
+            mensajeError = "Error: no se puede dividir entre cero.";
+            return Double.NaN;
+        }
+        mensajeError = "";
         return a / b;
-    }
-    
-    @Override
-    public boolean validacion(){
-        return b == 0? false: true;
     }
 }

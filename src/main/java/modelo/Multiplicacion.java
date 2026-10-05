@@ -15,8 +15,7 @@ public class Multiplicacion extends Operacion{
     }
     
     @Override
-    public double resultado(){
+    public double calcular(){
         return a * b;
     }
-    
 }

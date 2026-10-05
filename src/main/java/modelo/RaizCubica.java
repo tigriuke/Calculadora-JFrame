@@ -10,17 +10,12 @@ package modelo;
  */
 public class RaizCubica extends Operacion{
     
-    public RaizCubica(double a, double b) {
-        b = 3;
-        super(a, b);     
-    }
-    
-    public double resultado(){
-        return Math.pow(a, b);
+    public RaizCubica(double a) {
+        super(a, 0);     
     }
     
     @Override
-    public boolean validacion(){
-        return a < 0? false: true;
+    public double calcular(){
+        return Math.cbrt(a);
     }
 }

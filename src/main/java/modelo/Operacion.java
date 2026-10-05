@@ -9,21 +9,43 @@ package modelo;
  * @author Samuel Lopez
  */
 public class Operacion {
-    public double a;
-    public double b;
+    protected double a;
+    protected double b;
+    protected String mensajeError;
     
     public Operacion(double a, double b) {
         this.a = a;
         this.b = b;
     }
     
-    public double resultado(){
+    public double calcular(){
         System.out.println("Error, no se ha ingresado ningun tipo de calculo: Suma, resta, multiplicacion, division ");
         return 0;
     }
-    
-    public boolean validacion(){
-        System.out.println("Esta operacion no requiere ningun tipo de validacion. (Suma, resta, multiplicacion)");
-        return true;
+
+    public double getA() {
+        return a;
     }
+
+    public void setA(double a) {
+        this.a = a;
+    }
+
+    public double getB() {
+        return b;
+    }
+
+    public void setB(double b) {
+        this.b = b;
+    }
+
+    public String getMensajeError() {
+        return mensajeError;
+    }
+
+    public void setMensajeError(String mensajeError) {
+        this.mensajeError = mensajeError;
+    }
+    
+    
 }
