@@ -73,49 +73,113 @@ public class VistaCalculadora extends javax.swing.JFrame {
         jLabel2.setText("0");
         jLabel2.setToolTipText("");
 
-        jButton1.setText("jButton1");
+        jButton1.setBackground(new java.awt.Color(255, 102, 102));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 70)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setText("C");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jSeparator1.setBackground(new java.awt.Color(51, 51, 51));
         jSeparator1.setForeground(new java.awt.Color(51, 51, 51));
 
-        jButton2.setText("jButton1");
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 70)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(102, 153, 255));
+        jButton2.setText("7");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton3.setText("jButton1");
+        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 70)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(102, 153, 255));
+        jButton3.setText("4");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(this::jButton3ActionPerformed);
 
-        jButton4.setText("jButton1");
+        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 70)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(102, 153, 255));
+        jButton4.setText("1");
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton5.setText("jButton1");
+        jButton5.setBackground(new java.awt.Color(102, 102, 102));
+        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 70)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 153, 255));
+        jButton5.setText("√");
+        jButton5.setBorderPainted(false);
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton5.setFocusPainted(false);
 
-        jButton6.setText("jButton1");
+        jButton6.setFont(new java.awt.Font("Segoe UI", 0, 70)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(102, 153, 255));
+        jButton6.setText("8");
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton7.setText("jButton1");
+        jButton7.setFont(new java.awt.Font("Segoe UI", 0, 70)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(102, 153, 255));
+        jButton7.setText("5");
+        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton8.setText("jButton1");
+        jButton8.setFont(new java.awt.Font("Segoe UI", 0, 70)); // NOI18N
+        jButton8.setForeground(new java.awt.Color(102, 153, 255));
+        jButton8.setText("2");
+        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton9.setText("jButton1");
+        jButton9.setFont(new java.awt.Font("Segoe UI", 0, 70)); // NOI18N
+        jButton9.setForeground(new java.awt.Color(102, 153, 255));
+        jButton9.setText("9");
+        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton10.setText("jButton1");
+        jButton10.setFont(new java.awt.Font("Segoe UI", 0, 70)); // NOI18N
+        jButton10.setForeground(new java.awt.Color(102, 153, 255));
+        jButton10.setText("6");
+        jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton11.setText("jButton1");
+        jButton11.setFont(new java.awt.Font("Segoe UI", 0, 70)); // NOI18N
+        jButton11.setForeground(new java.awt.Color(255, 153, 255));
+        jButton11.setText("³√");
+        jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton12.setText("jButton1");
+        jButton12.setFont(new java.awt.Font("Segoe UI", 0, 70)); // NOI18N
+        jButton12.setForeground(new java.awt.Color(102, 153, 255));
+        jButton12.setText("3");
+        jButton12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton13.setText("jButton1");
+        jButton13.setFont(new java.awt.Font("Segoe UI", 0, 70)); // NOI18N
+        jButton13.setForeground(new java.awt.Color(255, 153, 255));
+        jButton13.setText("÷");
+        jButton13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton14.setText("jButton1");
+        jButton14.setFont(new java.awt.Font("Segoe UI", 0, 70)); // NOI18N
+        jButton14.setForeground(new java.awt.Color(255, 153, 255));
+        jButton14.setText("ln");
+        jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton15.setText("jButton1");
+        jButton15.setFont(new java.awt.Font("Segoe UI", 0, 70)); // NOI18N
+        jButton15.setForeground(new java.awt.Color(255, 153, 255));
+        jButton15.setText("/");
+        jButton15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton16.setText("jButton1");
+        jButton16.setFont(new java.awt.Font("Segoe UI", 0, 70)); // NOI18N
+        jButton16.setForeground(new java.awt.Color(255, 153, 255));
+        jButton16.setText("-");
+        jButton16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton17.setText("jButton1");
+        jButton17.setFont(new java.awt.Font("Segoe UI", 0, 70)); // NOI18N
+        jButton17.setForeground(new java.awt.Color(102, 153, 255));
+        jButton17.setText("0");
+        jButton17.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton18.setText("jButton1");
+        jButton18.setFont(new java.awt.Font("Segoe UI", 0, 70)); // NOI18N
+        jButton18.setForeground(new java.awt.Color(102, 153, 255));
+        jButton18.setText(".");
+        jButton18.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton19.setText("jButton1");
+        jButton19.setBackground(new java.awt.Color(255, 153, 255));
+        jButton19.setFont(new java.awt.Font("Segoe UI", 0, 70)); // NOI18N
+        jButton19.setText("=");
+        jButton19.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton20.setText("jButton1");
+        jButton20.setFont(new java.awt.Font("Segoe UI", 0, 70)); // NOI18N
+        jButton20.setForeground(new java.awt.Color(255, 153, 255));
+        jButton20.setText("+");
+        jButton20.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
