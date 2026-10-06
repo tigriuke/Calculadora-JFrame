@@ -89,7 +89,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <Component id="resultado" max="32767" attributes="0"/>
+                      <Component id="Total" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="12" max="32767" attributes="0"/>
               </Group>
@@ -98,7 +98,7 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="resultado" min="-2" pref="94" max="-2" attributes="0"/>
+                  <Component id="Total" min="-2" pref="94" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -156,7 +156,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="resultado">
+        <Component class="javax.swing.JLabel" name="Total">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="66" red="33" type="rgb"/>
@@ -169,7 +169,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="4"/>
             <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="resultado"/>
+              <ComponentRef name="Total"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>

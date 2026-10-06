@@ -21,7 +21,10 @@ import modelo.Calculadora;
 public class VistaCalculadora extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VistaCalculadora.class.getName());
-
+    
+private double a = 0;
+private double b = 0;
+private String operador = "";
     /**
      * Creates new form VistaCalculadora
      */
@@ -39,7 +42,7 @@ public class VistaCalculadora extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        resultado = new javax.swing.JLabel();
+        Total = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         Borrar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
@@ -68,12 +71,12 @@ public class VistaCalculadora extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setForeground(new java.awt.Color(153, 153, 0));
 
-        resultado.setBackground(new java.awt.Color(51, 102, 255));
-        resultado.setFont(new java.awt.Font("Segoe UI", 0, 70)); // NOI18N
-        resultado.setForeground(new java.awt.Color(255, 153, 255));
-        resultado.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        resultado.setLabelFor(resultado);
-        resultado.setToolTipText("");
+        Total.setBackground(new java.awt.Color(51, 102, 255));
+        Total.setFont(new java.awt.Font("Segoe UI", 0, 70)); // NOI18N
+        Total.setForeground(new java.awt.Color(255, 153, 255));
+        Total.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        Total.setLabelFor(Total);
+        Total.setToolTipText("");
 
         jLabel2.setBackground(new java.awt.Color(51, 102, 255));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 70)); // NOI18N
@@ -305,13 +308,13 @@ public class VistaCalculadora extends javax.swing.JFrame {
                                     .addComponent(Multiplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Resta, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Suma, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addComponent(resultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Total, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Total, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -376,7 +379,7 @@ public class VistaCalculadora extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarActionPerformed
-        // TODO add your handling code here:
+        jLabel2.setText("");
     }//GEN-LAST:event_BorrarActionPerformed
 
     private void Num7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num7ActionPerformed
@@ -432,7 +435,21 @@ public class VistaCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_Num3ActionPerformed
 
     private void IgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IgualActionPerformed
-        // TODO add your handling code here:
+        try{
+        if(jLabel2.getText().isEmpty() && !operador.isEmpty()){
+            b=Double.parseDouble(jLabel2.getText());
+            
+            if (operador.equals("+")){
+            modelo.Suma suma=new modelo.Suma(a, b);
+            double resultado =suma.calcular();
+            
+            Total.setText(String.valueOf(resultado));
+            
+            operador="";}
+        }
+        
+        } catch (NumberFormatException ex) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Formato de numero Invalido");}
     }//GEN-LAST:event_IgualActionPerformed
 
     private void LogaritmoNaturalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogaritmoNaturalActionPerformed
@@ -452,7 +469,14 @@ public class VistaCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_RestaActionPerformed
 
     private void SumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SumaActionPerformed
-        // TODO add your handling code here:
+      try{
+        if (!jLabel2.getText().isEmpty()){
+            a= Double.parseDouble(jLabel2.getText());
+            operador ="+";
+            jLabel2.setText("");
+        }
+      
+     }catch(NumberFormatException ex){}
         
     }//GEN-LAST:event_SumaActionPerformed
 
@@ -491,9 +515,9 @@ public class VistaCalculadora extends javax.swing.JFrame {
     private javax.swing.JButton RaizCubica;
     private javax.swing.JButton Resta;
     private javax.swing.JButton Suma;
+    private javax.swing.JLabel Total;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel resultado;
     // End of variables declaration//GEN-END:variables
 }
