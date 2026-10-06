@@ -380,6 +380,10 @@ private String operador = "";
 
     private void BorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarActionPerformed
         jLabel2.setText("");
+        Total.setText("");
+        a=0;
+        b=0;
+        operador="";
     }//GEN-LAST:event_BorrarActionPerformed
 
     private void Num7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num7ActionPerformed
@@ -399,7 +403,20 @@ private String operador = "";
     }//GEN-LAST:event_Num0ActionPerformed
 
     private void RaizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RaizActionPerformed
-        // TODO add your handling code here:
+try {
+        if (!jLabel2.getText().isEmpty()) {
+            double valor = Double.parseDouble(jLabel2.getText());
+
+            RaizCubica cubica = new RaizCubica(valor);
+            double resultado = cubica.calcular();
+
+            Total.setText(String.valueOf(resultado));
+            jLabel2.setText("");
+        }
+    } catch (NumberFormatException ex) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Formato de número no válido");
+    }
+
     }//GEN-LAST:event_RaizActionPerformed
 
     private void Num8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num8ActionPerformed
@@ -415,11 +432,30 @@ private String operador = "";
     }//GEN-LAST:event_Num2ActionPerformed
 
     private void DecimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DecimalActionPerformed
-        // TODO add your handling code here:
+        String textoActual = jLabel2.getText();
+        
+        if (textoActual.isEmpty()){
+            jLabel2.setText("0.");
+        } else if (!textoActual.contains (".")){
+            jLabel2.setText(textoActual + ".");
+        }
     }//GEN-LAST:event_DecimalActionPerformed
 
     private void RaizCubicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RaizCubicaActionPerformed
-        // TODO add your handling code here:
+        try {
+            if (!jLabel2.getText().isEmpty()){
+                double valor = Double.parseDouble(jLabel2.getText());
+                
+                RaizCubica cubica= new RaizCubica(valor);
+                double resultado = cubica.calcular();
+                
+                Total.setText(String.valueOf(resultado));
+                jLabel2.setText("");
+            }
+            } catch (NumberFormatException ex){
+                javax.swing.JOptionPane.showMessageDialog(this, "Formato de numero no valido");
+            }
+        
     }//GEN-LAST:event_RaizCubicaActionPerformed
 
     private void Num9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num9ActionPerformed
@@ -436,7 +472,7 @@ private String operador = "";
 
     private void IgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IgualActionPerformed
         try{
-        if(jLabel2.getText().isEmpty() && !operador.isEmpty()){
+        if(!jLabel2.getText().isEmpty() && !operador.isEmpty()){
             b=Double.parseDouble(jLabel2.getText());
             
             if (operador.equals("+")){
@@ -453,19 +489,57 @@ private String operador = "";
     }//GEN-LAST:event_IgualActionPerformed
 
     private void LogaritmoNaturalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogaritmoNaturalActionPerformed
-        // TODO add your handling code here:
+        try{
+            if (!jLabel2.getText().isEmpty()){
+                double valor = Double.parseDouble(jLabel2.getText());
+                
+                LogaritmoNatural ln= new LogaritmoNatural(valor);
+                double resultado = ln.calcular();
+                
+                if (Double.isNaN(resultado)){
+                    javax.swing.JOptionPane.showMessageDialog(this, ln.getMensajeError(), "Error matematico", javax.swing.JOptionPane.ERROR_MESSAGE);
+                }else{
+                    Total.setText(String.valueOf(resultado));
+                }
+                
+                jLabel2.setText("");
+            }
+        } catch (NumberFormatException ex){
+            javax.swing.JOptionPane.showMessageDialog(this, "Formato de numero no valido");
+        }
     }//GEN-LAST:event_LogaritmoNaturalActionPerformed
 
     private void DivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DivisionActionPerformed
-        // TODO add your handling code here:
+              try{
+        if (!jLabel2.getText().isEmpty()){
+            a= Double.parseDouble(jLabel2.getText());
+            operador ="/";
+            jLabel2.setText("");
+        }
+      
+     }catch(NumberFormatException ex){}
     }//GEN-LAST:event_DivisionActionPerformed
 
     private void MultiplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MultiplicarActionPerformed
-        // TODO add your handling code here:
+              try{
+        if (!jLabel2.getText().isEmpty()){
+            a= Double.parseDouble(jLabel2.getText());
+            operador ="*";
+            jLabel2.setText("");
+        }
+      
+     }catch(NumberFormatException ex){}
     }//GEN-LAST:event_MultiplicarActionPerformed
 
     private void RestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RestaActionPerformed
-        // TODO add your handling code here:
+             try{
+        if (!jLabel2.getText().isEmpty()){
+            a= Double.parseDouble(jLabel2.getText());
+            operador ="-";
+            jLabel2.setText("");
+        }
+      
+     }catch(NumberFormatException ex){}
     }//GEN-LAST:event_RestaActionPerformed
 
     private void SumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SumaActionPerformed
