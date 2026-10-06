@@ -475,14 +475,31 @@ try {
         if(!jLabel2.getText().isEmpty() && !operador.isEmpty()){
             b=Double.parseDouble(jLabel2.getText());
             
-            if (operador.equals("+")){
-            modelo.Suma suma=new modelo.Suma(a, b);
-            double resultado =suma.calcular();
-            
-            Total.setText(String.valueOf(resultado));
-            
-            operador="";}
+           double resultado = 0;
+           
+           if (operador.equals("+")){
+               modelo.Suma suma= new modelo.Suma(a, b);
+               resultado =suma.calcular();
+           }else if(operador.equals("-")){
+               modelo.Resta resta = new modelo.Resta(a, b);
+               resultado = resta.calcular();
+           }else if (operador.equals ("*")){
+               modelo.Multiplicacion mult = new modelo.Multiplicacion (a, b);
+               resultado = mult.calcular();
+           }else if (operador.equals ("/")){
+               if (b==0){
+                   javax.swing.JOptionPane.showMessageDialog (this, "No se puede dividir entre cero", "Error matematico", javax.swing.JOptionPane.ERROR_MESSAGE);
+                   return;
+               }
+               modelo.Division div = new modelo.Division(a, b);
+               resultado = div.calcular();
+           }
+           
+           Total.setText(String.valueOf(resultado));
+           jLabel2.setText("");
+           operador = "";
         }
+
         
         } catch (NumberFormatException ex) {
             javax.swing.JOptionPane.showMessageDialog(this, "Formato de numero Invalido");}
