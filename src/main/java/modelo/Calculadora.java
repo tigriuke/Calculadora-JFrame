@@ -16,8 +16,7 @@ public class Calculadora {
             if(!(entradaActual.contains("."))){
                 entradaActual += ".";
             }
-        }
-        if (entradaActual.equals("0")){
+        }else if (entradaActual.equals("0")){
             entradaActual = caracter;
         }else{
             entradaActual = entradaActual + caracter;
