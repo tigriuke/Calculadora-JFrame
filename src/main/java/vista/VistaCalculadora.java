@@ -530,69 +530,48 @@ import modelo.Calculadora;
     }//GEN-LAST:event_LogaritmoNaturalActionPerformed
 
     private void DivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DivisionActionPerformed
-        try {
-            if (!jLabel2.getText().isEmpty()) {
-                a = Double.parseDouble(jLabel2.getText());
-                operador = "/";
-                jLabel2.setText("");
-            }
-
-        } catch (NumberFormatException ex) {
-        }
+       prepararOperacion("/");
     }//GEN-LAST:event_DivisionActionPerformed
 
     private void MultiplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MultiplicarActionPerformed
-        try {
-            if (!jLabel2.getText().isEmpty()) {
-                a = Double.parseDouble(jLabel2.getText());
-                operador = "*";
-                jLabel2.setText("");
-            }
-
-        } catch (NumberFormatException ex) {
-        }
+    prepararOperacion("*");
     }//GEN-LAST:event_MultiplicarActionPerformed
 
     private void RestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RestaActionPerformed
-       
+String texto = jLabel2.getText();
+if (texto.isEmpty() && (Total.getText().isEmpty() || !operador.isEmpty())) {
+    jLabel2.setText("-");
+} else if (!texto.equals("-")) {
+    prepararOperacion("-");
+}
+    }//GEN-LAST:event_RestaActionPerformed
+private void prepararOperacion(String op) {
     String texto = jLabel2.getText();
-    
-    if (texto.isEmpty()) {
-        if (!Total.getText().isEmpty() && !Total.getText().equals("Error") && operador.isEmpty()) {
-            a = Double.parseDouble(Total.getText());
-            operador = "-";
+    try {
+        if (!texto.isEmpty() && !texto.equals("-")) {
+            a = Double.parseDouble(texto);          // usa el número escrito
+        } else if (texto.isEmpty() && !operador.isEmpty()) {
+            operador = op;                          // solo cambia el operador
+            return;
+        } else if (texto.isEmpty() && !Total.getText().isEmpty()) {
+            a = Double.parseDouble(Total.getText()); // usa el resultado anterior
         } else {
-            jLabel2.setText("-");
+            return;
         }
-    } else if (texto.equals("-")) {
-        // Ya tiene el signo, no duplicar
-    } else {
-        a = Double.parseDouble(texto);
-        operador = "-";
+        operador = op;
         jLabel2.setText("");
+    } catch (NumberFormatException ex) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Formato de numero no valido");
     }
 }
-
-    
-    }//GEN-LAST:event_RestaActionPerformed
-
     private void SumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SumaActionPerformed
-        try {
-            if (!jLabel2.getText().isEmpty()) {
-                a = Double.parseDouble(jLabel2.getText());
-                operador = "+";
-                jLabel2.setText("");
-            }
-
-        } catch (NumberFormatException ex) {
-        }
-
+     prepararOperacion("+");
     }//GEN-LAST:event_SumaActionPerformed
 
     /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+             * @param args the command line arguments
+             */
+        public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
