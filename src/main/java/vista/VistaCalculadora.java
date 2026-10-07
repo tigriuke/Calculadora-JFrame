@@ -8,23 +8,17 @@ package vista;
  *
  * @author coffe
  */
-
-import modelo.Suma;
-import modelo.Resta;
-import modelo.RaizCubica;
 import modelo.RaizCuadrada;
-import modelo.Operacion;
-import modelo.Multiplicacion;
-import modelo.LogaritmoNatural;
-import modelo.Division;
-import modelo.Calculadora;
+
 public class VistaCalculadora extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VistaCalculadora.class.getName());
-    
-private double a = 0;
-private double b = 0;
-private String operador = "";
+
+    private double a = 0;
+    private double b = 0;
+    private String operador = "";
+    private String prefijo = "";
+
     /**
      * Creates new form VistaCalculadora
      */
@@ -381,50 +375,49 @@ private String operador = "";
     private void BorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarActionPerformed
         jLabel2.setText("");
         Total.setText("");
-        a=0;
-        b=0;
-        operador="";
+        a = 0;
+        b = 0;
+        operador = "";
     }//GEN-LAST:event_BorrarActionPerformed
 
     private void Num7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num7ActionPerformed
-          jLabel2.setText(jLabel2.getText() + "7");
+        jLabel2.setText(jLabel2.getText() + "7");
     }//GEN-LAST:event_Num7ActionPerformed
 
     private void Num4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num4ActionPerformed
-         jLabel2.setText(jLabel2.getText() + "4");
+        jLabel2.setText(jLabel2.getText() + "4");
     }//GEN-LAST:event_Num4ActionPerformed
 
     private void Num1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num1ActionPerformed
-         jLabel2.setText(jLabel2.getText() + "1");
+        jLabel2.setText(jLabel2.getText() + "1");
     }//GEN-LAST:event_Num1ActionPerformed
 
     private void Num0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num0ActionPerformed
-          jLabel2.setText(jLabel2.getText() + "0");
+        jLabel2.setText(jLabel2.getText() + "0");
     }//GEN-LAST:event_Num0ActionPerformed
 
     private void RaizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RaizActionPerformed
+        String texto = numeroActual();
+if (texto.isEmpty() || texto.equals("-")) return;
 try {
-        if (!jLabel2.getText().isEmpty()) {
-            double valor = Double.parseDouble(jLabel2.getText());
-
-            RaizCubica cubica = new RaizCubica(valor);
-            double resultado = cubica.calcular();
-
-            Total.setText(String.valueOf(resultado));
-            jLabel2.setText("");
-        }
-    } catch (NumberFormatException ex) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Formato de número no válido");
+    double resultado = new RaizCuadrada(Double.parseDouble(texto)).calcular();
+    if (Double.isNaN(resultado)) {
+        mostrarError("No existe la raiz cuadrada de un numero negativo");
+        return;
     }
+    mostrarResultadoUnario(resultado);
+} catch (NumberFormatException ex) {
+    mostrarError("Formato de numero no valido");
+}
 
     }//GEN-LAST:event_RaizActionPerformed
 
     private void Num8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num8ActionPerformed
-          jLabel2.setText(jLabel2.getText() + "8");
+        jLabel2.setText(jLabel2.getText() + "8");
     }//GEN-LAST:event_Num8ActionPerformed
 
     private void Num5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num5ActionPerformed
-         jLabel2.setText(jLabel2.getText() + "5");
+        jLabel2.setText(jLabel2.getText() + "5");
     }//GEN-LAST:event_Num5ActionPerformed
 
     private void Num2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num2ActionPerformed
@@ -432,158 +425,176 @@ try {
     }//GEN-LAST:event_Num2ActionPerformed
 
     private void DecimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DecimalActionPerformed
-        String textoActual = jLabel2.getText();
-        
-        if (textoActual.isEmpty()){
-            jLabel2.setText("0.");
-        } else if (!textoActual.contains (".")){
-            jLabel2.setText(textoActual + ".");
-        }
+       String texto = numeroActual();
+if (texto.isEmpty() || texto.equals("-")) {
+    jLabel2.setText(jLabel2.getText() + "0.");
+} else if (!texto.contains(".")) {
+    jLabel2.setText(jLabel2.getText() + ".");
+}
     }//GEN-LAST:event_DecimalActionPerformed
 
     private void RaizCubicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RaizCubicaActionPerformed
-        try {
-            if (!jLabel2.getText().isEmpty()){
-                double valor = Double.parseDouble(jLabel2.getText());
-                
-                RaizCubica cubica= new RaizCubica(valor);
-                double resultado = cubica.calcular();
-                
-                Total.setText(String.valueOf(resultado));
-                jLabel2.setText("");
-            }
-            } catch (NumberFormatException ex){
-                javax.swing.JOptionPane.showMessageDialog(this, "Formato de numero no valido");
-            }
-        
+       String texto = numeroActual();
+if (texto.isEmpty() || texto.equals("-")) return;
+try {
+    double resultado = new modelo.RaizCubica(Double.parseDouble(texto)).calcular();
+    mostrarResultadoUnario(resultado);
+} catch (NumberFormatException ex) {
+    mostrarError("Formato de numero no valido");
+}
     }//GEN-LAST:event_RaizCubicaActionPerformed
 
     private void Num9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num9ActionPerformed
-          jLabel2.setText(jLabel2.getText() + "9");
+        jLabel2.setText(jLabel2.getText() + "9");
     }//GEN-LAST:event_Num9ActionPerformed
 
     private void Num6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num6ActionPerformed
-          jLabel2.setText(jLabel2.getText() + "6");
+        jLabel2.setText(jLabel2.getText() + "6");
     }//GEN-LAST:event_Num6ActionPerformed
 
     private void Num3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Num3ActionPerformed
-          jLabel2.setText(jLabel2.getText() + "3");
+        jLabel2.setText(jLabel2.getText() + "3");
     }//GEN-LAST:event_Num3ActionPerformed
 
     private void IgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IgualActionPerformed
-        try{
-        if(!jLabel2.getText().isEmpty() && !operador.isEmpty()){
-            b=Double.parseDouble(jLabel2.getText());
-            
-           double resultado = 0;
-           
-           if (operador.equals("+")){
-               modelo.Suma suma= new modelo.Suma(a, b);
-               resultado =suma.calcular();
-           }else if(operador.equals("-")){
-               modelo.Resta resta = new modelo.Resta(a, b);
-               resultado = resta.calcular();
-           }else if (operador.equals ("*")){
-               modelo.Multiplicacion mult = new modelo.Multiplicacion (a, b);
-               resultado = mult.calcular();
-           }else if (operador.equals ("/")){
-               if (b==0){
-                   javax.swing.JOptionPane.showMessageDialog (this, "No se puede dividir entre cero", "Error matematico", javax.swing.JOptionPane.ERROR_MESSAGE);
-                   return;
-               }
-               modelo.Division div = new modelo.Division(a, b);
-               resultado = div.calcular();
-           }
-           
-           Total.setText(String.valueOf(resultado));
-           jLabel2.setText("");
-           operador = "";
-        }
-
-        
-        } catch (NumberFormatException ex) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Formato de numero Invalido");}
+       String texto = numeroActual();
+if (texto.isEmpty() || texto.equals("-") || operador.isEmpty()) return;
+try {
+    b = Double.parseDouble(texto);
+    if (operador.equals("/") && b == 0) {
+        mostrarError("No se puede dividir entre cero");
+        return;
+    }
+    double resultado = calcular(operador, a, b);
+    Total.setText(formatear(resultado));
+    jLabel2.setText("");
+    operador = "";
+    prefijo = "";
+} catch (NumberFormatException ex) {
+    mostrarError("Formato de numero no valido");
+}
     }//GEN-LAST:event_IgualActionPerformed
 
     private void LogaritmoNaturalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogaritmoNaturalActionPerformed
-        try{
-            if (!jLabel2.getText().isEmpty()){
-                double valor = Double.parseDouble(jLabel2.getText());
-                
-                LogaritmoNatural ln= new LogaritmoNatural(valor);
-                double resultado = ln.calcular();
-                
-                if (Double.isNaN(resultado)){
-                    javax.swing.JOptionPane.showMessageDialog(this, ln.getMensajeError(), "Error matematico", javax.swing.JOptionPane.ERROR_MESSAGE);
-                }else{
-                    Total.setText(String.valueOf(resultado));
-                }
-                
-                jLabel2.setText("");
-            }
-        } catch (NumberFormatException ex){
-            javax.swing.JOptionPane.showMessageDialog(this, "Formato de numero no valido");
-        }
+        String texto = numeroActual();
+if (texto.isEmpty() || texto.equals("-")) return;
+try {
+    modelo.LogaritmoNatural ln = new modelo.LogaritmoNatural(Double.parseDouble(texto));
+    double resultado = ln.calcular();
+    if (Double.isNaN(resultado)) {
+        mostrarError(ln.getMensajeError());
+        return;
+    }
+    mostrarResultadoUnario(resultado);
+} catch (NumberFormatException ex) {
+    mostrarError("Formato de numero no valido");
+}
     }//GEN-LAST:event_LogaritmoNaturalActionPerformed
 
     private void DivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DivisionActionPerformed
-              try{
-        if (!jLabel2.getText().isEmpty()){
-            a= Double.parseDouble(jLabel2.getText());
-            operador ="/";
-            jLabel2.setText("");
-        }
-      
-     }catch(NumberFormatException ex){}
+        prepararOperacion("/");
     }//GEN-LAST:event_DivisionActionPerformed
 
     private void MultiplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MultiplicarActionPerformed
-              try{
-        if (!jLabel2.getText().isEmpty()){
-            a= Double.parseDouble(jLabel2.getText());
-            operador ="*";
-            jLabel2.setText("");
-        }
-      
-     }catch(NumberFormatException ex){}
+        prepararOperacion("*");
     }//GEN-LAST:event_MultiplicarActionPerformed
 
     private void RestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RestaActionPerformed
-             try{
-        if (!jLabel2.getText().isEmpty()){
-            a= Double.parseDouble(jLabel2.getText());
-            operador ="-";
-            jLabel2.setText("");
-        }
-      
-     }catch(NumberFormatException ex){}
+       String texto = numeroActual();
+if (texto.isEmpty() && (Total.getText().isEmpty() || !operador.isEmpty())) {
+    jLabel2.setText(jLabel2.getText() + "-");   // signo negativo
+} else if (!texto.equals("-")) {
+    prepararOperacion("-");
+}
     }//GEN-LAST:event_RestaActionPerformed
-
-    private void SumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SumaActionPerformed
-      try{
-        if (!jLabel2.getText().isEmpty()){
-            a= Double.parseDouble(jLabel2.getText());
-            operador ="+";
-            jLabel2.setText("");
-        }
-      
-     }catch(NumberFormatException ex){}
         
+           // Devuelve solo el número que se está escribiendo (sin "7 x ")
+    private String numeroActual() {
+        return jLabel2.getText().substring(prefijo.length());
+    }
+
+    // Muestra 7 en vez de 7.0
+    private String formatear(double v) {
+        if (v == Math.rint(v) && Math.abs(v) < 1e15) {
+            return String.valueOf((long) v);
+        }
+        return String.valueOf(v);
+    }
+
+    private String simbolo(String op) {
+        if (op.equals("*")) return "x";
+        if (op.equals("/")) return "÷";
+        return op;
+    }
+
+    private double calcular(String op, double x, double y) {
+        if (op.equals("+")) return new modelo.Suma(x, y).calcular();
+        if (op.equals("-")) return new modelo.Resta(x, y).calcular();
+        if (op.equals("*")) return new modelo.Multiplicacion(x, y).calcular();
+        if (op.equals("/")) return new modelo.Division(x, y).calcular();
+        return Double.NaN;
+    }
+
+    private void mostrarError(String msg) {
+        javax.swing.JOptionPane.showMessageDialog(this, msg, "Error matematico",
+                javax.swing.JOptionPane.ERROR_MESSAGE);
+    }
+
+    // Para √, ³√ y ln: si hay una operación en curso, reemplaza el número en la línea
+    private void mostrarResultadoUnario(double resultado) {
+        if (prefijo.isEmpty()) {
+            Total.setText(formatear(resultado));
+            jLabel2.setText("");
+        } else {
+            jLabel2.setText(prefijo + formatear(resultado));
+        }
+    }
+
+    private void prepararOperacion(String op) {
+        String texto = numeroActual();
+        try {
+            if (!texto.isEmpty() && !texto.equals("-")) {
+                double valor = Double.parseDouble(texto);
+                if (!operador.isEmpty()) {            // encadenar: 7 x 7 + ...
+                    if (operador.equals("/") && valor == 0) {
+                        mostrarError("No se puede dividir entre cero");
+                        return;
+                    }
+                    valor = calcular(operador, a, valor);
+                }
+                a = valor;
+            } else if (texto.isEmpty() && !operador.isEmpty()) {
+                // no hay número todavía: solo cambia el operador
+            } else if (texto.isEmpty() && !Total.getText().isEmpty()) {
+                a = Double.parseDouble(Total.getText()); // usa el resultado anterior
+            } else {
+                return;
+            }
+            operador = op;
+            prefijo = formatear(a) + " " + simbolo(op) + " ";
+            jLabel2.setText(prefijo);
+            Total.setText("");
+        } catch (NumberFormatException ex) {
+            mostrarError("Formato de numero no valido");
+        }
+    }
+    private void SumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SumaActionPerformed
+        prepararOperacion("+");
     }//GEN-LAST:event_SumaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+        /**
+         * @param args the command line arguments
          */
+        public static void main(String args[]) {
+            /* Set the Nimbus look and feel */
+            //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+            /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+             */
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new VistaCalculadora().setVisible(true));
-    }
+ /* Create and display the form */
+            java.awt.EventQueue.invokeLater(() -> new VistaCalculadora().setVisible(true));
+        }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Borrar;
